@@ -1,8 +1,6 @@
 > Beluga is Cute
 ___
 
-&nbsp
-
 |날짜|한일|진행도|비고|
 |:---:|:---:|:---:|:---:|
 |3/18|Backend Logic|30%|First Commit|
