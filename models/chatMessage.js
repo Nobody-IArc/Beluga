@@ -5,7 +5,7 @@ const chatMessage = new mongoose.Schema ({
     writer: { type: mongoose.Schema.Types.ObjectId, ref: 'User', required: true },
     message: { type: String, required: true },
     sendAt: { type: Date, default: Date.now },
-    isRead: { type: Boolean, default: false },
+    readBy: [{ type: mongoose.Schema.Types.ObjectId, ref: 'User' }]
 });
 
 module.exports = mongoose.model('Message', chatMessage);

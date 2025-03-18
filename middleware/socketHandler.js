@@ -76,6 +76,24 @@ async function setUpSocket(server) {
             }
         });
 
+        socket.on('messageReadCheck', async (data) => {
+            const { messageId, userId } = data;
+
+            try {
+                await Message.findByIdAndUpdate(
+                    messageId,
+                    { $push: { readBy: userId } },
+                    {}
+                );
+
+                console.log(`${socket.id} received a message`);
+
+                io.emit('messageReadCheck', { messageId, userId });
+            } catch (err) {
+                console.error(err.message);
+            }
+        });
+
         socket.on('disconnect', () => {
             console.log(`${socket.id} disconnected`);
         });
